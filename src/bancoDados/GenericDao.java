@@ -33,13 +33,18 @@ public class GenericDao {
 	    }
 	}
 	
-	public List<Object[]> selecionar(String selectSql) throws SQLException
+	public List<Object[]> selecionar(String selectSql, String valorFiltro) throws SQLException
 	{
         List<Object[]> resultados = new ArrayList<>();
         
         try
         {
             PreparedStatement ps = Conecta.getConnection().prepareStatement(selectSql);
+            
+            if(valorFiltro != null)
+            {
+            	ps.setObject(1, valorFiltro);
+            }
             
             ResultSet rs = ps.executeQuery();
             int columnCount = rs.getMetaData().getColumnCount();
