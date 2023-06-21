@@ -36,7 +36,7 @@ public class Aeronave {
 		public String getDataFabricacao() {
 			return dataFabricacao;
 		}
-		public void setDataNasc(String d) {
+		public void setDataFabricacao(String d) {
 			this.dataFabricacao = d;
 		}
 		
