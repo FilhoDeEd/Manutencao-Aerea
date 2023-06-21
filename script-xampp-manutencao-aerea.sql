@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/06/2023 às 22:43
+-- Tempo de geração: 22/06/2023 às 01:31
 -- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Versão do PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,19 +62,6 @@ CREATE TABLE `mecanico` (
   `registro` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `servico`
---
-
-CREATE TABLE `servico` (
-  `codigo` int(11) NOT NULL,
-  `dataRealizacao` date NOT NULL,
-  `horasConsumidas` int(10) UNSIGNED NOT NULL,
-  `observacoes` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Índices para tabelas despejadas
 --
@@ -99,12 +86,6 @@ ALTER TABLE `manutencao`
 ALTER TABLE `mecanico`
   ADD PRIMARY KEY (`cpf`),
   ADD UNIQUE KEY `registro` (`registro`);
-
---
--- Índices de tabela `servico`
---
-ALTER TABLE `servico`
-  ADD PRIMARY KEY (`codigo`);
 
 --
 -- Restrições para tabelas despejadas
