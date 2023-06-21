@@ -47,4 +47,9 @@ public class Manutencao
 	public void setNome(int hp) {
 		this.horasPrevistas = hp;
 	}
+	
+	// inserir uma nova manutenção
+	public static void inserirManutencao(int num_serie) {
+		
+	}
 }
