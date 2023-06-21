@@ -29,7 +29,7 @@ public class AeronaveDao extends GenericDao
 		}
 	}
 	
-	public List<Object[]> selecionar(String... camposSelect)
+	public List<Object[]> selecionar(String campoFiltro, String valorFiltro, String... camposSelect)
 	{
         try
         {
@@ -43,8 +43,13 @@ public class AeronaveDao extends GenericDao
         	
         	comando = comando.substring(0, comando.length() - 2);
         	comando = comando.concat(" FROM aeronave");
-
-            return super.selecionar(comando);
+        	
+        	if(campoFiltro != null)
+        	{
+        		comando = comando.concat(" WHERE " + campoFiltro + " = (?)");
+        	}
+        	
+            return super.selecionar(comando, valorFiltro);
         }
         catch(SQLException e)
         {
