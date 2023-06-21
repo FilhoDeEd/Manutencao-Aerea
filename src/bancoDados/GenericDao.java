@@ -33,7 +33,7 @@ public class GenericDao {
 	    }
 	}
 	
-	public List<Object[]> selecionar(String selectSql, String valorFiltro) throws SQLException
+	public List<Object[]> selecionar(String selectSql, Object valorFiltro) throws SQLException
 	{
         List<Object[]> resultados = new ArrayList<>();
         

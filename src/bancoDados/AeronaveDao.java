@@ -29,7 +29,7 @@ public class AeronaveDao extends GenericDao
 		}
 	}
 	
-	public List<Object[]> selecionar(String campoFiltro, String valorFiltro, String... camposSelect)
+	public List<Object[]> selecionar(String campoFiltro, Object valorFiltro, String... camposSelect)
 	{
         try
         {
