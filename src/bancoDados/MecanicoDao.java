@@ -29,7 +29,7 @@ private Mecanico m;
 		}
 	}
 	
-	public List<Object[]> selecionar(String... camposSelect)
+	public List<Object[]> selecionar(String campoFiltro, String valorFiltro, String... camposSelect)
 	{
         try
         {
@@ -44,7 +44,12 @@ private Mecanico m;
         	comando = comando.substring(0, comando.length() - 2);
         	comando = comando.concat(" FROM mecanico");
 
-            return super.selecionar(comando);
+        	if(campoFiltro != null)
+        	{
+        		comando = comando.concat(" WHERE " + campoFiltro + " = (?)");
+        	}
+        	
+            return super.selecionar(comando, valorFiltro);
         }
         catch(SQLException e)
         {
