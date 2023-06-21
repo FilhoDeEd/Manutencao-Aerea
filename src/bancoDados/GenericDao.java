@@ -1,7 +1,11 @@
 package bancoDados;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class GenericDao {
 	
@@ -28,4 +32,42 @@ public class GenericDao {
 	    	Conecta.getConnection().close();
 	    }
 	}
+	
+	public List<Object[]> selecionar(String selectSql) throws SQLException
+	{
+        List<Object[]> resultados = new ArrayList<>();
+        
+        try
+        {
+            PreparedStatement ps = Conecta.getConnection().prepareStatement(selectSql);
+            
+            ResultSet rs = ps.executeQuery();
+            int columnCount = rs.getMetaData().getColumnCount();
+
+            while(rs.next())
+            {
+                Object[] row = new Object[columnCount];
+                
+                for(int i = 0; i < columnCount; i++)
+                {
+                    row[i] = rs.getObject(i + 1);
+                }
+                
+                resultados.add(row);
+            }
+
+            rs.close();
+            ps.close(); 
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            Conecta.getConnection().close();
+        }
+        
+        return resultados;
+    }
 }
