@@ -9,7 +9,7 @@ public class Main
 	public static void main(String[] args)
 	{
 		// Dados para teste:
-		boolean isInserted = true;
+		boolean isInserted = false;
 		
 		if(!isInserted)
 		{
