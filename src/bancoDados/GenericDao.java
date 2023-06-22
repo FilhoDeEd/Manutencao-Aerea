@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GenericDao {
-	
+public class GenericDao
+{
 	public void inserir(String insertsql, Object... parametros) throws SQLException
 	{
 	    try

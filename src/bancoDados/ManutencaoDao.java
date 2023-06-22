@@ -19,8 +19,8 @@ public class ManutencaoDao extends GenericDao
 	{
 		try
 		{
-			String comando = "INSERT INTO manutencao VALUES (?,?)";
-			super.inserir(comando, m.getCodigo(), m.getDataRealizacao());
+			String comando = "INSERT INTO manutencao VALUES (?,?,?,?,?)";
+			super.inserir(comando, m.getCodigo(), m.getDataRealizacao(), m.getAeronave().getNumeroSerie(), m.getMecanicoResp().getCpf(), m.getHorasPrevistas());
 			return true;
 		}
 		catch(SQLException e)

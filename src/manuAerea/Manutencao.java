@@ -1,10 +1,7 @@
 package manuAerea;
 
-import java.util.List;
-import java.util.ArrayList;
-import bancoDados.MecanicoDao;
-import java.util.Random;
 import java.util.Scanner;
+import bancoDados.ManutencaoDao;
 import java.time.LocalDate;
 
 
@@ -61,28 +58,42 @@ public class Manutencao
 	{	
 		this.aeronave = Aeronave.validarAeronave(num_serie);
 		
-		MecanicoDao mecDao = new MecanicoDao(null);
-		
-		List<Object[]> tabelaMecanicos = mecDao.selecionar(null, null, "cpf");
-		
-		List<String> cpfMecanicos = new ArrayList<String>();
-		
-		for(Object[] row : tabelaMecanicos)
+		if(this.aeronave == null)
 		{
-			cpfMecanicos.add((String) row[0]);
+			System.out.println("Aeronave não encontrada.");
+			System.out.println("Inserção cancelada.");
+			return;
 		}
 		
-		Random random = new Random();
-		
-		int index = random.nextInt(0, cpfMecanicos.size());
-		
-		String mecResponsavel = cpfMecanicos.get(index);
+		this.mecanicoResp = Mecanico.getRandomMec();
 		
 		this.dataRealizacao = this.getDataAtual();
 		
-		this.defHoras(mecResponsavel);
+		this.defHoras(mecanicoResp.getCpf());
 		
-		//continuar (show())
+		this.showRegistrarManutencao();
+		
+		System.out.println("Confirmar manutenção? (sim/nao): ");
+		Scanner scanner = new Scanner(System.in);
+		String resposta = scanner.next();
+		scanner.close();
+		
+		resposta = resposta.trim().toLowerCase();
+		
+		if(resposta.equals("sim"))
+		{
+			ManutencaoDao manDao = new ManutencaoDao(this);
+			
+			if(manDao.inserir())
+			{
+				System.out.println("Manutenção inserida");
+			}
+		}
+		else if(resposta.equals("nao"))
+		{
+			System.out.println("Inserção cancelada");
+			return;
+		}
 	}
 	
 	public String getDataAtual()
@@ -91,16 +102,36 @@ public class Manutencao
 	}
 	
 	public void defHoras(String cpf)
-	{
+	{	
 		Scanner scanner = new Scanner(System.in);
-		
 		System.out.println("Mecânico: ".concat(cpf));
-		System.out.println("Defina a quantidade de horas previstas: " );
+		System.out.println("Defina a quantidade de horas previstas: ");
 		int hp = scanner.nextInt();
-		scanner.close();
 		
 		this.setHorasPrevistas(hp);
 	}
 	
+	public void showRegistrarManutencao()
+	{
+		System.out.println("-------------------------------------");
+	    System.out.println("Data de Realização: " + dataRealizacao);
+	    
+	    System.out.println("-------------------------------------");
+	    System.out.println("Aeronave: ");
+	    if(aeronave != null)
+	    {
+	        aeronave.show();
+	    }
+	    
+	    System.out.println("-------------------------------------");
+	    System.out.println("Mecânico Responsável: ");
+	    if(mecanicoResp != null)
+	    {
+	        mecanicoResp.show();
+	    }
+	    
+	    System.out.println("Horas Previstas: " + horasPrevistas);
+	    System.out.println("-------------------------------------");
+	}
 	
 }
