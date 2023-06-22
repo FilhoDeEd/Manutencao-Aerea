@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/06/2023 às 01:31
+-- Tempo de geração: 22/06/2023 às 03:23
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -86,6 +86,16 @@ ALTER TABLE `manutencao`
 ALTER TABLE `mecanico`
   ADD PRIMARY KEY (`cpf`),
   ADD UNIQUE KEY `registro` (`registro`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `manutencao`
+--
+ALTER TABLE `manutencao`
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas

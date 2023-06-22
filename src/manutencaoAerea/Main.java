@@ -16,7 +16,6 @@ public class Main
 			System.out.printf("Certo");
 		}else {
 			System.out.printf("Errado");
-		}
-				
+		}	
 	}
 }

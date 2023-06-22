@@ -47,5 +47,9 @@ public class Aeronave {
 	public void setRegistro(int n) {
 		this.numeroSerie = n;
 	}
-
+	
+	public static Aeronave validarAeronave(int num_serie)
+	{
+		return new Aeronave();
+	}
 }
