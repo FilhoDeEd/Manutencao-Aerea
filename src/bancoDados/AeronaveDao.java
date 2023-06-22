@@ -3,7 +3,7 @@ package bancoDados;
 import java.sql.SQLException;
 import java.util.List;
 
-import manutencaoAerea.Aeronave;
+import manuAerea.Aeronave;
 
 public class AeronaveDao extends GenericDao
 {

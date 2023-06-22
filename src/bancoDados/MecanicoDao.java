@@ -3,7 +3,7 @@ package bancoDados;
 import java.sql.SQLException;
 import java.util.List;
 
-import manutencaoAerea.Mecanico;
+import manuAerea.Mecanico;
 
 public class MecanicoDao extends GenericDao
 {

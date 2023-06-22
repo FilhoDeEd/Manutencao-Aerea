@@ -1,4 +1,4 @@
-package manutencaoAerea;
+package manuAerea;
 
 public class Mecanico {
 	private String cpf;

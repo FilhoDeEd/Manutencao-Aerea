@@ -1,4 +1,4 @@
-package manutencaoAerea;
+package manuAerea;
 
 public class Aeronave {
 	private String prefixo;

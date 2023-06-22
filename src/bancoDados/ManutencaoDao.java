@@ -1,8 +1,9 @@
 package bancoDados;
 
 import java.sql.SQLException;
-import manutencaoAerea.Manutencao;
 import java.util.List;
+
+import manuAerea.Manutencao;
 
 
 public class ManutencaoDao extends GenericDao
